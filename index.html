@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DogShop - Tienda Virtual para Perros</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Encabezado y Menú de Navegación -->
+    <header>
+        <div class="logo">
+            <h1>🐾 DogShop</h1>
+        </div>
+
+        <button id="btn-menu" class="btn-menu">☰ Menú</button>
+
+        <nav id="menu-principal">
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#beneficios">Beneficios</a></li>
+                <li><a href="#catalogo">Catálogo</a></li>
+                <li><a href="#preguntas">Preguntas</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+
+        <div class="acciones-header">
+            <button id="btn-favoritos" class="btn-icono">
+                ❤️ Favs (<span id="contador-fav">0</span>)
+            </button>
+            <button id="btn-carrito" class="btn-icono">
+                🛒 Carrito (<span id="contador-carrito">0</span>)
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Página de Inicio (Hero) -->
+        <section id="inicio" class="hero">
+            <div class="hero-texto">
+                <h2>Todo para el cuidado y felicidad de tu perro</h2>
+                <p>Somos una tienda virtual dedicada a ofrecer alimento nutritivo, camas cómodas, juguetes resistentes y accesorios de paseo para perros de todas las edades.</p>
+                <div class="hero-botones">
+                    <a href="#catalogo" class="boton">Ver Productos</a>
+                    <a href="#contacto" class="boton boton-secundario">Hacer un Pedido</a>
+                </div>
+            </div>
+            <div class="hero-imagen">
+                <img src="img/hero-dog.svg" alt="Perro feliz de DogShop">
+            </div>
+        </section>
+
+        <!-- Tarjetas Informativas -->
+        <section id="beneficios" class="seccion">
+            <h2 class="titulo-seccion">¿Por qué comprar en DogShop?</h2>
+            <div class="contenedor-beneficios">
+                <article class="tarjeta-info">
+                    <h3>🥩 Alimento Saludable</h3>
+                    <p>Contamos con comida rica en proteínas y vitaminas para una buena digestión.</p>
+                </article>
+                <article class="tarjeta-info">
+                    <h3>🛏️ Descanso Cómodo</h3>
+                    <p>Camas acolchadas y mantas térmicas que cuidan las articulaciones de tu mascota.</p>
+                </article>
+                <article class="tarjeta-info">
+                    <h3>🦮 Paseo Seguro</h3>
+                    <p>Collares, arneses antitirones y mochilas resistentes para salir a caminar.</p>
+                </article>
+                <article class="tarjeta-info">
+                    <h3>🚚 Envío a Domicilio</h3>
+                    <p>Recibe tus productos directamente en casa de forma rápida y segura.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Catálogo de Productos -->
+        <section id="catalogo" class="seccion fondo-gris">
+            <h2 class="titulo-seccion">Catálogo de Productos Caninos</h2>
+
+            <!-- Botones de filtro -->
+            <div class="filtros">
+                <button class="btn-filtro activo" data-categoria="todos">Todos</button>
+                <button class="btn-filtro" data-categoria="alimento">Alimento</button>
+                <button class="btn-filtro" data-categoria="descanso">Descanso</button>
+                <button class="btn-filtro" data-categoria="paseo">Paseo</button>
+                <button class="btn-filtro" data-categoria="juguetes">Juguetes y Cuidado</button>
+            </div>
+
+            <!-- Galería de Productos con CSS Grid -->
+            <div class="galeria-productos" id="lista-productos">
+
+                <!-- Producto 1 -->
+                <article class="tarjeta-producto" data-categoria="alimento">
+                    <img src="img/alimento-premium.jpg" alt="Alimento Premium de Salmón">
+                    <h3>Alimento Premium Salmón (7 kg)</h3>
+                    <p>Comida balanceada sin granos para perros adultos.</p>
+                    <p class="precio">$38.50</p>
+                    <div class="botones-producto">
+                        <button class="btn-fav" onclick="toggleFavorito(this)">♡ Favorito</button>
+                        <button class="boton" onclick="agregarAlCarrito('Alimento Premium Salmón', 38.50)">Agregar</button>
+                    </div>
+                </article>
+
+                <!-- Producto 2 -->
+                <article class="tarjeta-producto" data-categoria="descanso">
+                    <img src="img/cama-ortopedica.jpeg" alt="Cama Ortopédica">
+                    <h3>Cama Acolchada Ortopédica</h3>
+                    <p>Espuma suave con funda lavable para perros medianos y grandes.</p>
+                    <p class="precio">$54.90</p>
+                    <div class="botones-producto">
+                        <button class="btn-fav" onclick="toggleFavorito(this)">♡ Favorito</button>
+                        <button class="boton" onclick="agregarAlCarrito('Cama Acolchada Ortopédica', 54.90)">Agregar</button>
+                    </div>
+                </article>
+
+                <!-- Producto 3 -->
+                <article class="tarjeta-producto" data-categoria="paseo">
+                    <img src="img/arnes-reflectivo.webp" alt="Arnés Antitirones">
+                    <h3>Arnés Reflectivo Antitirones</h3>
+                    <p>Ajustable al pecho con cintas reflectivas para paseos nocturnos.</p>
+                    <p class="precio">$26.00</p>
+                    <div class="botones-producto">
+                        <button class="btn-fav" onclick="toggleFavorito(this)">♡ Favorito</button>
+                        <button class="boton" onclick="agregarAlCarrito('Arnés Reflectivo Antitirones', 26.00)">Agregar</button>
+                    </div>
+                </article>
+
+                <!-- Producto 4 -->
+                <article class="tarjeta-producto" data-categoria="juguetes">
+                    <img src="img/juguete-interactivo.webp" alt="Juguete Mordedor">
+                    <h3>Juguete Mordedor Dispensador</h3>
+                    <p>De caucho resistente para rellenar con premios y reducir el estrés.</p>
+                    <p class="precio">$16.50</p>
+                    <div class="botones-producto">
+                        <button class="btn-fav" onclick="toggleFavorito(this)">♡ Favorito</button>
+                        <button class="boton" onclick="agregarAlCarrito('Juguete Mordedor Dispensador', 16.50)">Agregar</button>
+                    </div>
+                </article>
+
+                <!-- Producto 5 -->
+                <article class="tarjeta-producto" data-categoria="alimento">
+                    <img src="img/snacks-dentales.jpg" alt="Snacks Dentales">
+                    <h3>Snacks Dentales de Menta</h3>
+                    <p>Premios masticables que ayudan a limpiar el sarro y mejorar el aliento.</p>
+                    <p class="precio">$12.90</p>
+                    <div class="botones-producto">
+                        <button class="btn-fav" onclick="toggleFavorito(this)">♡ Favorito</button>
+                        <button class="boton" onclick="agregarAlCarrito('Snacks Dentales de Menta', 12.90)">Agregar</button>
+                    </div>
+                </article>
+
+                <!-- Producto 6 -->
+                <article class="tarjeta-producto" data-categoria="juguetes">
+                    <img src="img/shampoo-natural.jpg" alt="Shampoo de Avena">
+                    <h3>Shampoo Natural de Avena</h3>
+                    <p>Cuida la piel sensible y deja el pelaje suave (500 ml).</p>
+                    <p class="precio">$14.20</p>
+                    <div class="botones-producto">
+                        <button class="btn-fav" onclick="toggleFavorito(this)">♡ Favorito</button>
+                        <button class="boton" onclick="agregarAlCarrito('Shampoo Natural de Avena', 14.20)">Agregar</button>
+                    </div>
+                </article>
+
+                <!-- Producto 7 -->
+                <article class="tarjeta-producto" data-categoria="paseo">
+                    <img src="img/mochila-transporte.jpg" alt="Mochila Transportadora">
+                    <h3>Mochila Transportadora Ventilada</h3>
+                    <p>Mochila con malla respirable para transportar perros pequeños.</p>
+                    <p class="precio">$42.00</p>
+                    <div class="botones-producto">
+                        <button class="btn-fav" onclick="toggleFavorito(this)">♡ Favorito</button>
+                        <button class="boton" onclick="agregarAlCarrito('Mochila Transportadora', 42.00)">Agregar</button>
+                    </div>
+                </article>
+
+                <!-- Producto 8 -->
+                <article class="tarjeta-producto" data-categoria="descanso">
+                    <img src="img/comedero-automatico.webp" alt="Kit Manta y Comedero">
+                    <h3>Kit Manta + Plato Antiansiedad</h3>
+                    <p>Incluye manta suave y comedero lento para mejorar la digestión.</p>
+                    <p class="precio">$29.90</p>
+                    <div class="botones-producto">
+                        <button class="btn-fav" onclick="toggleFavorito(this)">♡ Favorito</button>
+                        <button class="boton" onclick="agregarAlCarrito('Kit Manta + Plato', 29.90)">Agregar</button>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Elementos Desplegables: Preguntas Frecuentes -->
+        <section id="preguntas" class="seccion">
+            <h2 class="titulo-seccion">Preguntas Frecuentes</h2>
+            <div class="contenedor-preguntas">
+                <details>
+                    <summary>¿Cómo elijo la talla correcta de arnés o cama?</summary>
+                    <p>Te recomendamos medir el pecho de tu perro con una cinta métrica. Si tienes dudas, escríbenos en el formulario de contacto indicando su raza y peso.</p>
+                </details>
+                <details>
+                    <summary>¿Cuánto tiempo tarda el envío?</summary>
+                    <p>Los pedidos se entregan entre 24 y 48 horas dentro de la ciudad.</p>
+                </details>
+                <details>
+                    <summary>¿Qué métodos de pago aceptan?</summary>
+                    <p>Aceptamos transferencia bancaria, tarjeta de débito/crédito y pago en efectivo al recibir el pedido.</p>
+                </details>
+            </div>
+        </section>
+
+        <!-- Formulario de Contacto y Pedidos -->
+        <section id="contacto" class="seccion fondo-gris">
+            <h2 class="titulo-seccion">Formulario de Contacto y Pedidos</h2>
+            <div class="contenedor-contacto">
+                <form id="formulario-contacto">
+                    <div class="campo">
+                        <label for="nombre">Nombre completo:</label>
+                        <input type="text" id="nombre" placeholder="Ingresa tu nombre" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="correo">Correo electrónico:</label>
+                        <input type="email" id="correo" placeholder="ejemplo@correo.com" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="telefono">Teléfono:</label>
+                        <input type="tel" id="telefono" placeholder="0991234567" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="motivo">Tipo de consulta:</label>
+                        <select id="motivo" required>
+                            <option value="">Seleccione una opción...</option>
+                            <option value="pedido">Hacer un pedido a domicilio</option>
+                            <option value="consulta">Consulta sobre un producto</option>
+                            <option value="cambio">Cambio de talla</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label for="mensaje">Mensaje o detalle de tu pedido:</label>
+                        <textarea id="mensaje" rows="4" placeholder="Escribe aquí tu consulta o los productos que deseas..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="boton">Enviar Mensaje</button>
+                    <p id="mensaje-confirmacion" class="confirmacion"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Panel del Carrito de Compras -->
+    <aside id="panel-carrito" class="carrito-oculto">
+        <div class="carrito-cabecera">
+            <h3>🛒 Mi Carrito</h3>
+            <button id="cerrar-carrito" class="btn-cerrar">X</button>
+        </div>
+        <ul id="items-carrito" class="lista-carrito">
+            <li>El carrito está vacío.</li>
+        </ul>
+        <div class="carrito-pie">
+            <p class="total-texto">Total: $<span id="total-carrito">0.00</span></p>
+            <button id="btn-comprar" class="boton">Finalizar Compra</button>
+            <button id="btn-vaciar" class="boton boton-secundario">Vaciar</button>
+        </div>
+    </aside>
+
+    <!-- Pie de Página -->
+    <footer>
+        <p><strong>DogShop - Tienda Virtual para Perros</strong></p>
+        <p>Dirección: Av. Principal 123 | Teléfono: (02) 245-8900 | Correo: contacto@dogshop.com</p>
+        <p class="enlaces-footer">
+            <a href="#inicio">Inicio</a> |
+            <a href="#catalogo">Catálogo</a> |
+            <a href="#contacto">Contacto</a>
+        </p>
+        <p>&copy; 2026 DogShop - Proyecto Académico de Desarrollo Web</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
